@@ -2,11 +2,14 @@ package net.cozz.danco.homework5;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,9 +63,15 @@ public class ViewFlagActivity extends Activity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),
-                        "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),
+//                        "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
 
+                final WebView webView = (WebView) findViewById(R.id.activity_my_web_view);
+//                Intent i = new Intent(Intent.ACTION_WEB_SEARCH);
+//                String term = "capital:" + states.get(position);
+//                i.putExtra(SearchManager.QUERY, term);
+//
+//                startActivity(i);
             }
         });
 
