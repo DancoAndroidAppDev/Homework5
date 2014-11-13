@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="playinsgWithArrays">
+        <item name="test1">test1</item>
+        <item name="color">#ff0000</item>
+    </array>
+</resources>

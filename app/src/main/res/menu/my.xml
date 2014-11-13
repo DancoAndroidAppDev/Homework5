@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MyActivity">
+
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="101"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/increase_font"
+        android:title="@string/increase_font"
+        android:orderInCategory="110"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/decrease_font"
+        android:title="@string/decrease_font"
+        android:orderInCategory="111"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/animate"
+        android:icon="@drawable/ic_action_animate_1"
+        android:title="Settings"
+        android:orderInCategory="100"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/animate_all"
+        android:icon="@drawable/ic_action_animate"
+        android:title="Settings"
+        android:orderInCategory="100"
+        android:showAsAction="always" />
+
+</menu>
