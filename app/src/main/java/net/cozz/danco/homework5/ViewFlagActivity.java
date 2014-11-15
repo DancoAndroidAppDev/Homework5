@@ -4,12 +4,15 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,8 +48,33 @@ public class ViewFlagActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flag);
 
-        ActionBar actionBar = getActionBar();
+
+        // Inflate your custom layout
+        final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater().inflate(
+                R.layout.action_bar,
+                null);
+
+        // Set up your ActionBar
+        final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(actionBarLayout);
+
+        // You customization
+        final int actionBarColor = getResources().getColor(R.color.action_bar);
+        actionBar.setBackgroundDrawable(new ColorDrawable(actionBarColor));
+
+//        final Button actionBarTitle = (Button) findViewById(R.id.action_bar_title);
+//        actionBarTitle.setText("Index(2)");
+//
+//        final Button actionBarSent = (Button) findViewById(R.id.action_bar_sent);
+//        actionBarSent.setText("Sent");
+//
+//        final Button actionBarStaff = (Button) findViewById(R.id.action_bar_staff);
+//        actionBarStaff.setText("Staff");
+//
+//        final Button actionBarLocations = (Button) findViewById(R.id.action_bar_locations);
+//        actionBarLocations.setText("HIPPA Locations");
 
         final List<String> capitals =
                 Arrays.asList(getResources().getStringArray(R.array.capitals));

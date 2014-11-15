@@ -5,4 +5,9 @@
     <color name="blue">#0000FF</color>
     <color name="green">#00FF00</color>
     <color name="red">#FF0000</color>
+
+    <color name="action_bar">#ff0d0d0d</color>
+    <color name="white">#ffffffff</color>
+    <color name="off_white">#99ffffff</color>
+
 </resources>
