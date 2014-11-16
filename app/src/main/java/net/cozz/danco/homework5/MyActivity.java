@@ -33,7 +33,6 @@ public class MyActivity extends Activity {
 
     private int fontSize = 4;
 
-    private BaseAdapter adapter = null;
     private int position;
 
     public int getFontSize() {
@@ -41,7 +40,7 @@ public class MyActivity extends Activity {
     }
 
     private GridView gridView;
-    private TextView textView;
+//    private TextView textView;
 
     private Random rand = new Random();
     private final List<Integer> cellIndecies = new ArrayList<Integer>(50);
@@ -69,7 +68,6 @@ public class MyActivity extends Activity {
             Log.d("MyActivity", "unable to open datasource");
         }
 
-        adapter = new CellViewAdapter(this);
         loadContent();
     }
 
@@ -79,10 +77,10 @@ public class MyActivity extends Activity {
                 Arrays.asList(getResources().getStringArray(R.array.capitals));
 
         gridView = (GridView) findViewById(R.id.grid_view);
-        gridView.setAdapter(adapter);
+        gridView.setAdapter(new CellViewAdapter(this));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View v, final int position, long id) {
                 Toast.makeText(getApplicationContext(),
                         "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
 
