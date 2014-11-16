@@ -172,5 +172,6 @@
     <string name="state_name_placeholder">State Name</string>
     <string name="title_activity_flower_view">FlowerViewActivity</string>
     <string name="state_flag_description">State Flag</string>
+    <string name="show_flower">State Flower</string>
 
 </resources>

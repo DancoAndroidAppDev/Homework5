@@ -1,5 +1,6 @@
 package net.cozz.danco.homework5;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.SearchManager;
@@ -110,6 +111,11 @@ public class ViewFlagActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == R.id.show_flower) {
+            Intent intent = new Intent(getApplicationContext(), FlowerViewActivity.class);
+            intent.putExtra("position", getIntent().getExtras().getInt("position"));
+            startActivity(intent);
         }
         if (id == android.R.id.home) {
             finish();
