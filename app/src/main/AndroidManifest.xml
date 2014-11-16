@@ -20,6 +20,10 @@
             android:name="net.cozz.danco.homework5.ViewFlagActivity"
             android:label="@string/title_activity_flag" >
         </activity>
+        <activity
+            android:name="net.cozz.danco.homework5.FlowerViewActivity"
+            android:label="@string/title_activity_flower_view" >
+        </activity>
     </application>
 
 </manifest>

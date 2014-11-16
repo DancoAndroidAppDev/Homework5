@@ -1,6 +1,9 @@
 package net.cozz.danco.homework5;
 
+import android.annotation.TargetApi;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +52,7 @@ public class CellViewAdapter extends BaseAdapter {
     }
 
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
 
@@ -66,9 +70,6 @@ public class CellViewAdapter extends BaseAdapter {
                 }
             }
             int backgroundColor = colors[position];
-            int textColor = backgroundColor < Integer.MAX_VALUE / 2 ?
-                    backgroundColor * 2 :
-                    backgroundColor / 2;
             view.setBackgroundColor(backgroundColor);
 
             viewHolder = new ViewHolder();
@@ -76,7 +77,7 @@ public class CellViewAdapter extends BaseAdapter {
             TextView textView = (TextView) view.findViewById(R.id.state_cell_row1);
             textView.setText(states.get(position));
             // I've tried several algorithms here to try to pick a good color contrast --
-            //  is there a recommended method?
+            //  is there a recommended method? ans: use light color text on colored background
             if (!isFirstView) {
                 textView.setTextSize(dp2Px(context.getFontSize()));
             }
@@ -86,14 +87,19 @@ public class CellViewAdapter extends BaseAdapter {
             textView.setHeight(dp2Px(56));
             viewHolder.stateName = textView;
 
-//            View leftBox = view.findViewById(R.id.leftBox);
-//            leftBox.setBackgroundColor(r.nextInt());
-//            viewHolder.leftBox = leftBox;
+            //Trying to load a flag and flower for each cell consumes too much memory
+//            View flag = view.findViewById(R.id.stateFlag);
+//            String flagUri = String.format("drawable/%s", states.get(position).toLowerCase());
+//            int flagResource = context.getResources().getIdentifier(flagUri, null, context.getPackageName());
+//            flag.setBackground(context.getDrawable(flagResource));
+//            viewHolder.flag = flag;
 //
-//            View right = view.findViewById(R.id.rightBox);
-//            right.setBackgroundColor(r.nextInt());
-//            right.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
-//            viewHolder.rightBox = right;
+//            View flower = view.findViewById(R.id.stateFlower);
+//            String flowerUri = String.format("drawable/%s_flower", states.get(position).toLowerCase());
+//            int flowerResource = context.getResources().getIdentifier(flowerUri, null, context.getPackageName());
+//            flower.setBackground(context.getDrawable(flowerResource));
+//            flower.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+//            viewHolder.flower = flower;
 
             view.setTag(viewHolder);
         } else {
@@ -116,7 +122,7 @@ public class CellViewAdapter extends BaseAdapter {
 
     static class ViewHolder {
         TextView stateName;
-        View leftBox;
-        View rightBox;
+        View flag;
+        View flower;
     }
 }

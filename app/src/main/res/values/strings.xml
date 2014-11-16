@@ -4,7 +4,6 @@
     <string name="app_name">Homework5</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="another_text_view">More Text</string>
@@ -113,11 +112,65 @@
         <item>Madison</item>
         <item>Cheyenne</item>
     </string-array>
+    <string-array name="flowers">
+        <item>Camellia japonica</item>
+        <item>Myosotis alpestris</item>
+        <item>Carnegiea gigantea</item>
+        <item>Malus</item>
+        <item>Eschscholzia californica</item>
+        <item>Aquilegia caerulea</item>
+        <item>Kalmia latifolia</item>
+        <item>Prunus persica</item>
+        <item>Citrus sinensis</item>
+        <item>Rosa laevigata</item>
+        <item>Hibiscus brackenridgei</item>
+        <item>Philadelphus lewisii</item>
+        <item>Viola</item>
+        <item>Paeonia</item>
+        <item>Rosa arkansana</item>
+        <item>Helianthus annuus</item>
+        <item>Solidago gigantea</item>
+        <item>Magnolia</item>
+        <item>Pinus strobus</item>
+        <item>Rudbeckia hirta</item>
+        <item>Epigaea repens</item>
+        <item>Malus</item>
+        <item>Cypripedium reginae</item>
+        <item>Magnolia</item>
+        <item>Crataegus</item>
+        <item>Lewisia rediviva</item>
+        <item>Solidago gigantea</item>
+        <item>Artemisia tridentata</item>
+        <item>Syringa vulgaris</item>
+        <item>Viola sororia</item>
+        <item>Yucca</item>
+        <item>Rosa</item>
+        <item>Cornus florida</item>
+        <item>Rosa blanda</item>
+        <item>Dianthus caryophyllus</item>
+        <item>Rosa (Oklahoma Rose)</item>
+        <item>Berberis aquifolium</item>
+        <item>Kalmia latifolia</item>
+        <item>Viola</item>
+        <item>Gelsemium sempervirens</item>
+        <item>Pulsatilla hirsutissima</item>
+        <item>Iris</item>
+        <item>Lupinus sp.</item>
+        <item>Calochortus nuttallii</item>
+        <item>Trifolium pratense</item>
+        <item>Cornus florida</item>
+        <item>Rhododendron macrophyllum</item>
+        <item>Rhododendron maximum</item>
+        <item>Viola papilionacea</item>
+        <item>Castilleja linariifolia</item>
+    </string-array>
 
     <string name="title_activity_my">MyActivity</string>
     <string name="increase_font">Font Size +</string>
     <string name="decrease_font">Font Size -</string>
     <string name="title_activity_flag">State Flag</string>
     <string name="state_name_placeholder">State Name</string>
+    <string name="title_activity_flower_view">FlowerViewActivity</string>
+    <string name="state_flag_description">State Flag</string>
 
 </resources>

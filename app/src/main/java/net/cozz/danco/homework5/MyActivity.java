@@ -18,6 +18,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,6 +45,22 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+
+        final String[] capitals = getResources().getStringArray(R.array.flowers);
+
+        FlowersDataSource datasource = new FlowersDataSource(this);
+
+        try {
+            datasource.open();
+            int i = 0;
+            for (String state : getResources().getStringArray(R.array.states)) {
+                datasource.addFlower(state, capitals[i++]);
+            }
+            List <Flower> capitalsList = datasource.getFlowers();
+            Log.d("", capitalsList.toString());
+        } catch (SQLException e) {
+            Log.d("MyActivity", "unable to open datasource");
+        }
 
         adapter = new CellViewAdapter(this);
         loadContent();

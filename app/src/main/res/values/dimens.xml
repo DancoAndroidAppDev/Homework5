@@ -6,7 +6,7 @@
     <dimen name="activity_bottom_margin">2dp</dimen>
 
     <!-- Text sizes -->
-    <dimen name="text_size_small">14.0sp</dimen>
+    <dimen name="text_size_small">12.0sp</dimen>
     <dimen name="text_size_medium">16.0sp</dimen>
 
     <!-- ActionBar color strip -->
