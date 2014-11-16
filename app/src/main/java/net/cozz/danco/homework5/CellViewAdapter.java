@@ -87,18 +87,10 @@ public class CellViewAdapter extends BaseAdapter {
             textView.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
             textView.setHeight(dp2Px(56));
 
-//            textView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(context, ViewFlagActivity.class);
-//                    intent.putExtra("position", position);
-//                    context.startActivity(intent);
-//                }
-//            });
             viewHolder.stateName = textView;
 
-            context.registerForContextMenu(textView);
-
+//            context.registerForContextMenu(textView);
+//
             //Trying to load a flag and flower for each cell consumes too much memory
 //            View flag = view.findViewById(R.id.stateFlag);
 //            String flagUri = String.format("drawable/%s", states.get(position).toLowerCase());

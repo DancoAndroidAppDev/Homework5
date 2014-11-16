@@ -45,6 +45,7 @@ public class MyActivity extends Activity {
     private Random rand = new Random();
     private final List<Integer> cellIndecies = new ArrayList<Integer>(50);
     private List<String> theStates;
+    private List<String> capitals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class MyActivity extends Activity {
 
         final String[] flowers = getResources().getStringArray(R.array.flowers);
         theStates = Arrays.asList(getResources().getStringArray(R.array.states));
+        capitals = Arrays.asList(getResources().getStringArray(R.array.capitals));
 
         FlowersDataSource datasource = new FlowersDataSource(this);
 
@@ -73,14 +75,12 @@ public class MyActivity extends Activity {
 
 
     private void loadContent() {
-        final List<String> capitals =
-                Arrays.asList(getResources().getStringArray(R.array.capitals));
-
         gridView = (GridView) findViewById(R.id.grid_view);
         gridView.setAdapter(new CellViewAdapter(this));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, final int position, long id) {
+                Log.i(TAG, "setting click listener for position: " + position);
                 Toast.makeText(getApplicationContext(),
                         "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
 
@@ -88,6 +88,7 @@ public class MyActivity extends Activity {
             }
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
