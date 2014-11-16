@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,34 +28,40 @@ import java.util.Random;
 
 public class MyActivity extends Activity {
     public static final String TAG = MyActivity.class.getCanonicalName();
+    public static final String VIEW_FLAG = "View flag";
+    public static final String VIEW_FLOWER = "View flower";
 
     private int fontSize = 4;
 
     private BaseAdapter adapter = null;
+    private int position;
 
     public int getFontSize() {
         return fontSize;
     }
 
     private GridView gridView;
+    private TextView textView;
 
     private Random rand = new Random();
     private final List<Integer> cellIndecies = new ArrayList<Integer>(50);
+    private List<String> theStates;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        final String[] capitals = getResources().getStringArray(R.array.flowers);
+        final String[] flowers = getResources().getStringArray(R.array.flowers);
+        theStates = Arrays.asList(getResources().getStringArray(R.array.states));
 
         FlowersDataSource datasource = new FlowersDataSource(this);
 
         try {
             datasource.open();
             int i = 0;
-            for (String state : getResources().getStringArray(R.array.states)) {
-                datasource.addFlower(state, capitals[i++]);
+            for (String state : theStates) {
+                datasource.addFlower(state, flowers[i++]);
             }
             List <Flower> capitalsList = datasource.getFlowers();
             Log.d("", capitalsList.toString());
@@ -79,13 +86,10 @@ public class MyActivity extends Activity {
                 Toast.makeText(getApplicationContext(),
                         "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getApplicationContext(), ViewFlagActivity.class);
-                intent.putExtra("position", position);
-                startActivity(intent);
+                showView(position, ViewFlagActivity.class);
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,6 +122,29 @@ public class MyActivity extends Activity {
     }
 
 
+//    @Override
+//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//        super.onCreateContextMenu(menu, v, menuInfo);
+//        textView = (TextView) v;
+//        String stateName = textView.getText().toString();
+//        menu.setHeaderTitle(stateName);
+//        position = theStates.indexOf(stateName);
+//        menu.add(0, v.getId(), 0, VIEW_FLOWER);
+//        menu.add(0, v.getId(), 0, VIEW_FLAG);
+//    }
+//
+//
+//    @Override
+//    public boolean onContextItemSelected(MenuItem item) {
+//        if (item.getTitle().equals(VIEW_FLAG)) {
+//            showFlagView();
+//        } else if (item.getTitle().equals(VIEW_FLOWER)) {
+//            showFlowerView();
+//        }
+//
+//        return true;
+//    }
+//
     public void doAnimate() {
         int position = rand.nextInt(gridView.getChildCount());
 
@@ -129,12 +156,6 @@ public class MyActivity extends Activity {
 
         Log.i(TAG, String.format("animating: %s", textView.getText().toString()));
         rotate(textView, false);
-    }
-
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
     }
 
 
@@ -237,11 +258,27 @@ public class MyActivity extends Activity {
     }
 
 
-
     public void continueAnim(final TextView textView){
         Animation animFadeOut;
 
         animFadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
         textView.startAnimation(animFadeOut);
+    }
+
+
+    private void showFlagView() {
+        showView(position, ViewFlagActivity.class);
+    }
+
+
+    private void showFlowerView() {
+        showView(position, FlowerViewActivity.class);
+    }
+
+
+    private void showView(final int position, Class clazz) {
+        Intent intent = new Intent(getApplicationContext(), clazz);
+        intent.putExtra("position", position);
+        startActivity(intent);
     }
 }

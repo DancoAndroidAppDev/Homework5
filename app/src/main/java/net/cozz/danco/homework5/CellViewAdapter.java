@@ -1,6 +1,7 @@
 package net.cozz.danco.homework5;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -54,7 +55,7 @@ public class CellViewAdapter extends BaseAdapter {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
+    public View getView(final int position, View view, ViewGroup viewGroup) {
 
         ViewHolder viewHolder;
 
@@ -85,7 +86,18 @@ public class CellViewAdapter extends BaseAdapter {
             textView.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
             textView.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
             textView.setHeight(dp2Px(56));
+
+//            textView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(context, ViewFlagActivity.class);
+//                    intent.putExtra("position", position);
+//                    context.startActivity(intent);
+//                }
+//            });
             viewHolder.stateName = textView;
+
+            context.registerForContextMenu(textView);
 
             //Trying to load a flag and flower for each cell consumes too much memory
 //            View flag = view.findViewById(R.id.stateFlag);
